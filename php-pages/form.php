@@ -1,8 +1,10 @@
 <?php
 
+if (isset($_POST)   && $_POST ['submit'] != '') {
+
 include('connection.php');
 
-$firstName = $_POST['firstName'];
+$conn->autocommit(FALSE);
 
 echo $firstName;
 
@@ -14,23 +16,78 @@ if($stmt=$conn->prepare($query)) {
     /*execute statment*/
     $stmt->execute();
 
-    /*stmt bind variables*/ 
-    $stmt->bind_result($fname);
-
-        /*fetch values*/ 
-        while($stmt->fetch()) {
-
-            $i++;
-            echo $i . ": " . $fname . "<br />";
-
+////////////////////begin insert for contacts//////////////
+//insert into database
+$sql = "INSERT INTO contacts (
+    firstName, 
+    lastName, 
+    age, 
+    email, 
+    phone    
+    ) VALUES (
+    '$firstName', 
+    '$lastName',
+    '$age', 
+    '$email',
+    '$phone' 
+    
+    )";
+    
+        if ($conn->query ($sql) === TRUE) {
+            echo "New record entered";
         }
+        else {
+            "Error: " . $sql . $conn->error;
+    }
+////////////////////end insert for contacts//////////////
 
-/*close statement*/ 
-$stmt->close();
+///////////////////begin insert for preferences//////////////////////
+//insert into database
+$sql = "INSERT INTO preferences (
+    firstName, 
+    lastName, 
+    age, 
+    email, 
+    phone, 
+    url, 
+    startDate, 
+    tShirt, 
+    color,
+    participation, 
+    timeOfDay, 
+    aboutYou, 
+    terms,
+    contacts_record_id
+    ) VALUES (
+    '$firstName', 
+    '$lastName',
+    '$age', 
+    '$email', 
+    '$phone', 
+    '$url', 
+    '$startDate', 
+    '$tShirt', 
+    '$color',
+    '$participation', 
+    '$timeOfDay', 
+    '$aboutYou', 
+    '$terms',
+    '$last_id'
+    )";
+    
+        if ($conn->query ($sql) === TRUE) {
 
-}
+            $last_id = $conn->insert_id;
+            echo "New record entered";
+        }
+        else {
+            "Error: " . $sql . $conn->error;
+    }
+    ////////////////////end insert for preferences//////////////
 
-echo "The number of records are " . $i;
-
-/*close connection*/ 
 $conn->close();
+
+} //came from post
+else {
+    echo "Please fill out the form";
+}
