@@ -8,8 +8,10 @@ include('connection.php');
 
 $i = 0;
 
+//$userPass = 'fc6317ca995c50d92793d0b4b94b6964728df1a54648aa2ba292a7a936dd9467'
+$userPass = hash('sha256', 'itse1311');
 
-$query = "SELECT firstName FROM contacts WHERE firstName = 'Simone' ORDER BY firstName ASC";
+$query = "SELECT firstName FROM contacts WHERE email = 'simbrown1988@gmail.com' ORDER BY firstName ASC";
 
 if($stmt=$conn->prepare($query)) {
     /*execute statment*/
