@@ -1,0 +1,26 @@
+
+
+.web-form {
+    width: 75%;
+    position: relative;
+    margin: auto;
+    background-color: #fffffd;
+    padding: 30px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.web-form div {
+    margin-top: 10px;
+}
+
+#age {
+    width: 100px;
+}
+
+
+
+.submit:hover {
+    background-color: #ffffff;
+    color: #000000 !important;
+}

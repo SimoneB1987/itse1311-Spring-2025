@@ -21,8 +21,9 @@ if($stmt=$conn->prepare($query)) {
         /*fetch values*/ 
         while($stmt->fetch()) {
 
-            $i++;
-            echo $i . ": " . $firstName . "<br />";
+            //$i++;
+            //echo $i . ": " . $firstName . "<br />";
+            echo "Welcome " . $_SESSION['validUser'];
 
         }
 
@@ -33,9 +34,9 @@ $_SESSION['validUser'] = $email;
 
 }
 
-echo "The number of records are " . $i;
+//echo "The number of records are " . $i;
 
-echo "The session is " . $_SESSION['validUser'];
+//echo "The session is " . $_SESSION['validUser'];
 
 /*close connection*/ 
 $conn->close();
