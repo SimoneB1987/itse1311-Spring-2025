@@ -3,8 +3,14 @@
 if (isset($_POST) && $_POST['submit'] != '') {
 
     include('connection.php');
+
+     // ✅ Generate the unique $form_id here
+
+     include('guid.php'); 
+     // defines $form_id and outputs it
     
-    include('upload.php');
+    include('upload.php'); 
+    // can now use $form_id safely
 
     $conn->autocommit(FALSE);
 

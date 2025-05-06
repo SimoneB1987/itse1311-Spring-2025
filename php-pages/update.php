@@ -4,7 +4,7 @@ session_start();
 
 include('connection.php');
 
-$sql = "UPDATE contacts SET age = '60' WHERE record_id = 1";
+$sql = "UPDATE contacts SET age = '70' WHERE record_id = 1";
 
 if ($conn->query($sql)===TRUE) {
     echo "Records Updated";

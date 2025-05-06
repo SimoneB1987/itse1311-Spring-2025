@@ -9,7 +9,7 @@ $i = 0;
 
 $userPass = hash('sha256', $passwordFromForm);
 
-$query = "SELECT firstName, email FROM contacts WHERE email = '$email' ORDER BY firstName ASC";
+$query = "SELECT firstName, email FROM contacts WHERE email = '$email' AND userPass = '$userPass' ORDER BY firstName ASC";
 
 if($stmt=$conn->prepare($query)) {
     /*execute statment*/

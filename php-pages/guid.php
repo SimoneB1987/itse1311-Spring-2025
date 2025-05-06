@@ -17,5 +17,5 @@ function guidv4($data = null) {
 //use the variable below
 $form_id = guidv4();
 
-echo strtoupper($form_id); //for testing purposes
+//echo strtoupper($form_id); //for testing purposes
 ?>
